@@ -1,5 +1,8 @@
 package ec.edu.uce.service;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +45,10 @@ public class CuentaBancariaServiImpl implements ICuentaBancariaServi {
 		return this.cuentaBancariaRepo.obtenerCuentaBancariaPorNumeroDeCuenta(numeroCuenta);
 	}
 
+	@Override
+	public List<CuentaBancaria> obtenerListaDeCuentasBancarias() {
+		// TODO Auto-generated method stub
+		return this.cuentaBancariaRepo.obtenerListaDeCuentasBancarias();
+	}
+ 
 }

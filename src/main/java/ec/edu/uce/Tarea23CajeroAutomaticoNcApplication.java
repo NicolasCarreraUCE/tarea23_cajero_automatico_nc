@@ -1,6 +1,8 @@
 package ec.edu.uce;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.Month;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +16,7 @@ import ec.edu.uce.modelo.CuentaHabiente;
 import ec.edu.uce.service.ICuentaBancariaServi;
 import ec.edu.uce.service.ICuentaHabienteServi;
 import ec.edu.uce.service.IGestorCajeroBancarioServi;
+import ec.edu.uce.service.IGestorReportesServi;
 
 @SpringBootApplication
 public class Tarea23CajeroAutomaticoNcApplication implements CommandLineRunner {
@@ -29,6 +32,9 @@ public class Tarea23CajeroAutomaticoNcApplication implements CommandLineRunner {
 	@Autowired
 	private IGestorCajeroBancarioServi gestorCajeroBancarioServi;
 	
+	@Autowired
+	private IGestorReportesServi gestorReportesServi;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Tarea23CajeroAutomaticoNcApplication.class, args);
 	}
@@ -36,6 +42,8 @@ public class Tarea23CajeroAutomaticoNcApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		// TALLER 23
 		
 		// INSERTAR CUENTAS
 //		// Cuenta 1
@@ -82,9 +90,54 @@ public class Tarea23CajeroAutomaticoNcApplication implements CommandLineRunner {
 //		this.gestorCajeroBancarioServi.retirarDinero("8013714919", new BigDecimal("1500"));
 		
 		// CONSULTAR SALDO
-		this.gestorCajeroBancarioServi.consultaSaldo("8777254300");
-		this.gestorCajeroBancarioServi.consultaSaldo("8013714919");
+//		this.gestorCajeroBancarioServi.consultaSaldo("8777254300");
+//		this.gestorCajeroBancarioServi.consultaSaldo("8013714919");
 		
+//		this.gestorReportesServi.reporteCuentaHabiente(new BigDecimal("10"));
+		
+		// TALLER 25
+		// Cuenta 1
+//		CuentaHabiente ch3 = new CuentaHabiente();
+//		ch3.setNombre("Lidia");
+//		ch3.setApellido("Oller");
+//		ch3.setCedula("1778033362");
+//		
+//		//this.cuentaHabienteServi.insertarCuentaHabiente(ch3);
+//		
+//		CuentaBancaria cb3 = new CuentaBancaria();
+//		cb3.setNumeroCuenta("1181794812");
+//		cb3.setSaldo(new BigDecimal("90000"));
+//		cb3.setTipo("Corriente");
+//		cb3.setCuentaHabiente(ch3);
+//		
+//		//this.cuentaBancariaServi.insertarCuentaBancaria(cb3);
+//		
+//		// Cuenta 2
+//		CuentaHabiente ch4 = new CuentaHabiente();
+//		ch4.setNombre("Edgar");
+//		ch4.setApellido("Diéguez");
+//		ch4.setCedula("1778518732");   
+//		
+//		//this.cuentaHabienteServi.insertarCuentaHabiente(ch4);
+//		
+//		CuentaBancaria cb4 = new CuentaBancaria();
+//		cb4.setNumeroCuenta("7827577054");
+//		cb4.setSaldo(new BigDecimal("90000"));
+//		cb4.setTipo("Corriente");
+//		cb4.setCuentaHabiente(ch4);
+//		
+//		//this.cuentaBancariaServi.actualizarCuentaBancaria(cb4);
+//		
+		// HACER RETIROS
+//		this.gestorCajeroBancarioServi.retirarDinero("8777254300", new BigDecimal("6598"));
+//		this.gestorCajeroBancarioServi.retirarDinero("8013714919", new BigDecimal("9252"));
+//		this.gestorCajeroBancarioServi.retirarDinero("1181794812", new BigDecimal("8253"));
+//		this.gestorCajeroBancarioServi.retirarDinero("7827577054", new BigDecimal("8638"));
+//		this.gestorCajeroBancarioServi.retirarDinero("1181794812", new BigDecimal("1894"));
+		
+		// IMPRIMIR REPORTES
+		this.gestorReportesServi.reporteCuentaHabiente(new BigDecimal("50000"));
+		this.gestorReportesServi.reporteHistoricoRetiros(LocalDateTime.of(2022, Month.MARCH, 12, 0, 0), new BigDecimal("1000"));
 	}
 
 }

@@ -1,7 +1,10 @@
 package ec.edu.uce.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -37,6 +40,13 @@ public class HistoricoRetiroRepoImpl implements IHistoricoRetiroRepo {
 	public void borrarHistoricoRetiro(Integer id) {
 		// TODO Auto-generated method stub
 		this.entityManager.remove(this.obtenerHistoricoRetiro(id));
+	}
+
+	@Override
+	public List<HistoricoRetiro> obtenerListaDeHistoricosDeRetiro() {
+		// TODO Auto-generated method stub
+		TypedQuery<HistoricoRetiro> myQuery = this.entityManager.createQuery("SELECT h FROM HistoricoRetiro h", HistoricoRetiro.class);
+		return myQuery.getResultList();
 	}
 
 }

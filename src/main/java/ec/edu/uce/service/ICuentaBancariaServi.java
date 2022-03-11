@@ -1,5 +1,7 @@
 package ec.edu.uce.service;
 
+import java.util.List;
+
 import ec.edu.uce.modelo.CuentaBancaria;
 
 public interface ICuentaBancariaServi {
@@ -9,4 +11,6 @@ public interface ICuentaBancariaServi {
 	void borrarCuentaBancaria(Integer id);
 	
 	CuentaBancaria obtenerCuentaBancariaPorNumeroDeCuenta(String numeroCuenta);
+
+	List<CuentaBancaria> obtenerListaDeCuentasBancarias();
 }

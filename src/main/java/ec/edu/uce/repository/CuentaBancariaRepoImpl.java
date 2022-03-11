@@ -1,5 +1,7 @@
 package ec.edu.uce.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -44,9 +46,16 @@ public class CuentaBancariaRepoImpl implements ICuentaBancariaRepo {
 	@Override
 	public CuentaBancaria obtenerCuentaBancariaPorNumeroDeCuenta(String numeroCuenta) {
 		// TODO Auto-generated method stub
-		TypedQuery<CuentaBancaria> myQuery = this.entityManager.createQuery("SELECT c FROM CuentaBancaria c WHERE c.numeroCuenta =:numCuenta", CuentaBancaria.class);
+		TypedQuery<CuentaBancaria> myQuery = this.entityManager.createQuery("SELECT c FROM CuentaBancaria c WHERE c.saldo >=:numCuenta", CuentaBancaria.class);
 		myQuery.setParameter("numCuenta", numeroCuenta);
 		return myQuery.getSingleResult();
 	}
 
+	@Override
+	public List<CuentaBancaria> obtenerListaDeCuentasBancarias() {
+		// TODO Auto-generated method stub
+		TypedQuery<CuentaBancaria> myQuery = this.entityManager.createQuery("SELECT c FROM CuentaBancaria c", CuentaBancaria.class);
+		return myQuery.getResultList();
+	}
+ 
 }
